@@ -1,4 +1,4 @@
-public abstract class SachTuan8 implements IGiaBan, IKiemKe {
+public abstract class Sach implements IGiaBan, IKiemKe {
     private String maSach;
     private String tieuDe;
     private String tacGia;
@@ -6,9 +6,9 @@ public abstract class SachTuan8 implements IGiaBan, IKiemKe {
     private int soLuong;
     private double giaCoBan;
 
-    public SachTuan8() {}
+    public Sach() {}
 
-    public SachTuan8(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) {
+    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
@@ -16,8 +16,8 @@ public abstract class SachTuan8 implements IGiaBan, IKiemKe {
         this.soLuong = soLuong;
         this.giaCoBan = giaCoBan;
     }
-    
-    public abstract double tinhGiaBan(); 
+
+    public abstract double tinhGiaBan();
 
     @Override
     public boolean kiemTraTonKho(int soLuongToiThieu) {
@@ -47,6 +47,8 @@ public abstract class SachTuan8 implements IGiaBan, IKiemKe {
         return "---------------------------\n" +
                "Ma sach: " + maSach + "\n" +
                "Tieu de: " + tieuDe + "\n" +
+               "Tac gia: " + tacGia + "\n" +
+               "Nam xuat ban: " + namXuatBan + "\n" +
                "Gia co ban: " + String.format("%,.0f", giaCoBan) + " VND\n";
     }
 }

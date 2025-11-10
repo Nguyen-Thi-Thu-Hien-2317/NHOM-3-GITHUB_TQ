@@ -23,7 +23,7 @@ public class SachTieuThuyet extends Sach {
                "The loai: " + theLoai + "\n" +
                "Thuoc series: " + (laSachSeries ? "Co" : "Khong") + "\n" +
                "GIA BAN: " + String.format("%,.0f", tinhGiaBan()) + " VND\n" +
-               "Ton kho: " + getSoLuong() + "\n" + 
+               "Ton kho: " + getSoLuong() + "\n" +
                "---------------------------";
     }
 }

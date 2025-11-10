@@ -24,7 +24,7 @@ public class SachGiaoTrinh extends Sach {
                "Mon hoc: " + monHoc + "\n" +
                "Cap do: " + capDo + "\n" +
                "GIA BAN: " + String.format("%,.0f", tinhGiaBan()) + " VND\n" +
-               "Ton kho: " + getSoLuong() + "\n" + 
+               "Ton kho: " + getSoLuong() + "\n" +
                "---------------------------";
     }
 }
