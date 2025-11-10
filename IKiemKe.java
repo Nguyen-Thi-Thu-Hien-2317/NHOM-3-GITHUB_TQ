@@ -1,3 +1,4 @@
 public interface IKiemKe {
-    public void thucHienKiemKe(); 
+    public boolean kiemTraTonKho(int soLuongToiThieu);
+    public void capNhatViTri(String viTriMoi);
 }

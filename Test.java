@@ -1,37 +1,48 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+
 public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        QuanLySach qls = new QuanLySach();
-        qls.getDanhSach().add(new SachGiaoTrinh("GT001", "Toan Cao Cap", "Nguyen Van A", 2020, 50, 100000, "Toan", "Dai Hoc"));
-        qls.getDanhSach().add(new SachTieuThuyet("TT001", "Co Giao Thao", "Nguyen Van B", 2018, 30, 85000, "Lang Man", true));
-        System.out.println("Da them san 2 cuon sach de thu nghiem tinh Gia Ban.");
+        
+        IQuanLySach quanLy = new QuanLySachImpl();
+        
+        Sach sachGT = new SachGiaoTrinh("GT001", "Toan Cao Cap 1", "Nguyen Van A", 2022, 15, 120000, "Toan", "Dai Hoc");
+        Sach sachTT = new SachTieuThuyet("TT001", "Huyet Chien", "Tran Thi B", 2023, 5, 95000, "Hanh Dong", true);
+        
+        quanLy.themSach(sachGT);
+        quanLy.themSach(sachTT);
+        
         while (true) {
-            System.out.println("\n===== MENU QUAN LY SACH (TINH TRU TUONG & INTERFACE) =====");
-            System.out.println("1. Them sach");
-            System.out.println("2. Hien thi tat ca sach (Kiem tra Gia Ban)");
-            System.out.println("3. Xoa sach theo ma");
-            System.out.println("4. Cap nhat thong tin sach theo ma");
-            System.out.println("5. THUC HIEN KIEM KE (Interface IKiemKe)"); // <--- Đã thêm chức năng
+            System.out.println("\n===== MENU QUAN LY SACH =====");
+            System.out.println("1. Hien thi tat ca sach");
+            System.out.println("2. Kiem tra/Cap nhat vi tri sach (IKiemKe)");
+            System.out.println("3. Bao cao ton kho toi thieu");
+            System.out.println("4. Thu Xoa sach (Theo ma)");
             System.out.println("0. Thoat");
-            System.out.print("Chon chuc nang: ");         
+            System.out.print("Chon chuc nang: ");
+            
             String chon = sc.nextLine();
+
             switch (chon) {
                 case "1":
-                    qls.themSach();
+                    quanLy.hienThiDanhSach();
                     break;
                 case "2":
-                    qls.hienThiTatCa();
+                    sachGT.capNhatViTri("Kho A1"); 
+                    System.out.print("Nhap so luong toi thieu muon kiem tra: ");
+                    int soLuong = Integer.parseInt(sc.nextLine());
+                    if (sachTT.kiemTraTonKho(soLuong)) {
+                        System.out.println("Sach [" + sachTT.getTieuDe() + "] dat ton kho.");
+                    } else {
+                        System.out.println("Sach [" + sachTT.getTieuDe() + "] khong dat ton kho.");
+                    }
                     break;
                 case "3":
-                    qls.xoaSach();
+                    quanLy.baoCaoTonKho(10);
                     break;
                 case "4":
-                    qls.capNhatSach();
-                    break;
-                case "5": 
-                    qls.thucHienKiemKe();
+                    System.out.print("Nhap ma sach can xoa (vi du: TT001): ");
+                    quanLy.xoaSach(sc.nextLine());
                     break;
                 case "0":
                     System.out.println("Thoat chuong trinh...");

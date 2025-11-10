@@ -1,4 +1,4 @@
-public abstract class Sach {
+public abstract class SachTuan8 implements IGiaBan, IKiemKe {
     private String maSach;
     private String tieuDe;
     private String tacGia;
@@ -6,10 +6,9 @@ public abstract class Sach {
     private int soLuong;
     private double giaCoBan;
 
-    public Sach() {
-    }
+    public SachTuan8() {}
 
-    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) {
+    public SachTuan8(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan) {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
         this.tacGia = tacGia;
@@ -17,8 +16,18 @@ public abstract class Sach {
         this.soLuong = soLuong;
         this.giaCoBan = giaCoBan;
     }
+    
+    public abstract double tinhGiaBan(); 
 
-    public abstract double tinhGiaBan();
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu) {
+        return this.soLuong >= soLuongToiThieu;
+    }
+
+    @Override
+    public void capNhatViTri(String viTriMoi) {
+        System.out.println("Da chuyen sach [" + this.tieuDe + "] den khu vuc: [" + viTriMoi + "].");
+    }
 
     public String getMaSach() { return maSach; }
     public void setMaSach(String maSach) { this.maSach = maSach; }
@@ -38,9 +47,6 @@ public abstract class Sach {
         return "---------------------------\n" +
                "Ma sach: " + maSach + "\n" +
                "Tieu de: " + tieuDe + "\n" +
-               "Tac gia: " + tacGia + "\n" +
-               "Nam xuat ban: " + namXuatBan + "\n" +
-               "So luong: " + soLuong + "\n" +
                "Gia co ban: " + String.format("%,.0f", giaCoBan) + " VND\n";
     }
 }
